@@ -65,6 +65,13 @@ export default class Bank {
         return account;
     }
 
+    /**
+     * Deposit money into the account with the given account number.
+     * @param {string} accountNumber the account number
+     * @param {number} amount the amount to deposit
+     * @throws {Error} if the account does not exist
+     * @returns {undefined}
+     */
     public deposit(accountNumber: string, amount: number): undefined {
 
         const account = this.getAccount(accountNumber);
@@ -73,6 +80,26 @@ export default class Bank {
             return;
         }
 
+        throw new Error('Account not found');
+    }
+
+    /**
+     * Withdraw money from the account with the given account number.
+     * @param {string} accountNumber the account number
+     * @param {number} amount the amount to withdraw
+     * @throws {Error} if the account does not exist
+     * @throws {Error} if the account does not have enough money
+     * @returns {undefined}
+     */
+    public withdraw(accountNumber: string, amount: number): undefined {
+        const account = this.getAccount(accountNumber);
+        if (account) {
+            if (account.balance < amount) {
+                throw new Error('Insufficient funds');
+            }
+            account.balance -= amount;
+            return;
+        }
         throw new Error('Account not found');
     }
 }

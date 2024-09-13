@@ -11,33 +11,61 @@ if (acc && acc.accountNumber === '123456789') {
     console.log('scenario 1 passed')
 }
 else{
-    console.log('scenario 1 failed')
+    console.log('story 1 scenario 1 failed')
 }
 
 // scenario 2
 try{
     bank.createAccount('John', 25, '123456789');
-    console.log('scenario 2 failed')
+    console.log('story 1 scenario 2 failed')
 }
 catch(e){
-    console.log('scenario 2 passed')
+    console.log('story 1 scenario 2 passed')
 }
 
 // Story #2
 // scenario 1
 bank.deposit('123456789', 100);
 if (acc && acc.balance === 100) {
-    console.log('scenario 1 passed')
+    console.log('story 2 scenario 1 passed')
 }
 else{
-    console.log('scenario 1 failed')
+    console.log('story 2 scenario 1 failed')
 }
 
 // scenario 2
 try{
     bank.deposit('i will fail', 100);
-    console.log('scenario 2 failed')
+    console.log('story 2 scenario 2 failed')
 }
 catch(e){
-    console.log('scenario 2 passed')
+    console.log('story 2 scenario 2 passed')
+}
+
+// Story #3
+// scenario 1
+bank.withdraw('123456789', 50);
+if (acc && acc.balance === 50) {
+    console.log('story 3 scenario 1 passed')
+}
+else{
+    console.log('story 3 scenario 1 failed')
+}
+
+// scenario 2
+try{
+    bank.withdraw('123456789', 100);
+    console.log('story 3 scenario 2 failed')
+}
+catch(e){
+    console.log('story 3 scenario 2 passed')
+}
+
+// scenario 3
+try{
+    bank.withdraw('i will fail', 100);
+    console.log('story 3 scenario 3 failed')
+}
+catch(e){
+    console.log('story 3 scenario 3 passed')
 }
