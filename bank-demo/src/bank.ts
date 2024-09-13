@@ -27,6 +27,17 @@ export default class Bank {
     }
 
     /**
+     * 
+     * This method returns the account with the given account number if it exists.
+     * 
+     * @param {string} accountNumber the account number
+     * @returns {BankAccount | undefined} The account if it exsists, otherwise undefined
+     */
+    private getAccount(accountNumber: string): BankAccount | undefined {
+        return this.accounts.find(account => account.accountNumber === accountNumber);
+    }
+
+    /**
      *  
      * This method creates a new bank account with the given name, age and account number.
      * 
@@ -52,5 +63,16 @@ export default class Bank {
 
         this.accounts.push(account);
         return account;
+    }
+
+    public deposit(accountNumber: string, amount: number): undefined {
+
+        const account = this.getAccount(accountNumber);
+        if (account) {
+            account.balance += amount;
+            return;
+        }
+
+        throw new Error('Account not found');
     }
 }
