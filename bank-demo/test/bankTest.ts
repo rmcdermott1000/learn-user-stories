@@ -69,3 +69,22 @@ try{
 catch(e){
     console.log('story 3 scenario 3 passed')
 }
+
+// Story #4
+// scenario 1
+const balance = bank.viewBalance('123456789');
+if (balance === 50) {
+    console.log('story 4 scenario 1 passed')
+}
+else{
+    console.log('story 4 scenario 1 failed')
+}
+
+// scenario 2
+try{
+    bank.viewBalance('i will fail');
+    console.log('story 4 scenario 2 failed')
+}
+catch(e){
+    console.log('story 4 scenario 2 passed')
+}

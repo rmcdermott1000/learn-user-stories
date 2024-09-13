@@ -102,4 +102,12 @@ export default class Bank {
         }
         throw new Error('Account not found');
     }
+
+    public viewBalance(accountNumber: string): number | undefined {
+        const account = this.getAccount(accountNumber);
+        if (account) {
+            return account.balance;
+        }
+        throw new Error('Account not found');
+    }
 }
